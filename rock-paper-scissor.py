@@ -65,8 +65,8 @@ def RPS():
 
 
 
-
 def result():
+    #add a output window here
     pass
 
 

@@ -11,11 +11,17 @@ root.config(bg="light blue")
 
 
 #Labels
-Heading = tk.Label(root, text="Rock, Paper and Scissors", font="Calibri 22 bold")
+'''Heading = tk.Label(root, text="Rock, Paper and Scissors", font="Calibri 22 bold")
 Heading.pack(pady=25)
 
 choosing_line = tk.Label(root, text="Choose Wisely", font="Calibri 15 italic")
-choosing_line.pack(pady=10)
+choosing_line.pack(pady=10)'''
+
+Heading = tk.Label(root, text="Rock, Paper and Scissors", font="Calibri 22 bold")
+Heading.grid(row=0, column=0, padx=50, pady=20)
+
+choosing_line = tk.Label(root, text="Choose Wisely", font="Calibri 15 italic")
+choosing_line.grid(row=1, column=0, pady=50)
 
 
 #Logic Unit
@@ -71,12 +77,17 @@ def result():
 
 
 
-
 #Buttons
-tk.Button(root, text="Rock", command=set_user_response(1), width=8).pack(pady=10)
-tk.Button(root, text="Paper", command=set_user_response(2), width=8).pack(pady=10)
-tk.Button(root, text="Scissors", command=set_user_response(3), width=8).pack(pady=10)
+'''r_btn = tk.Button(root, text="Rock", command=set_user_response(1), width=8).pack(side="bottom", padx=10, pady=10)
+p_btn = tk.Button(root, text="Paper", command=set_user_response(2), width=8).pack(side="left", padx=5, pady=10)
+s_btn = tk.Button(root, text="Scissors", command=set_user_response(3), width=8).pack(side="left", padx=5, pady=10)
+'''
+r_btn = tk.Button(root, text="Rock", command=set_user_response(1), width=8)
+p_btn = tk.Button(root, text="Paper", command=set_user_response(2), width=8)
+s_btn = tk.Button(root, text="Scissors", command=set_user_response(3), width=8)
 
-
+r_btn.grid(row=2, column=0, padx=5, pady=5)
+p_btn.grid(row=2, column=1, padx=5, pady=5)
+s_btn.grid(row=2, column=2, padx=5, pady=5)
 
 root.mainloop()

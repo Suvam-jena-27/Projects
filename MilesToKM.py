@@ -11,28 +11,47 @@ window.title("First App")   #title
 window.geometry("300x300")  #window
 window.config(bg="pink")    #background
 
+#Main Logic Unit
+#conversion function
+def convert():
+    miles = float(entry_value.get())
+    km = miles*1.60934
+    output_value.set(km)
+    
+
 #widget
 #title
 title_label = ttk.Label(master = window, text = "Miles to Km", font="Calibri 24 bold italic")
 #master: the object we need to place the text in
 #text: text to show
 #But, we need pack method to display on app's window
-title_label.pack(pady=10)   #pady to add pixels top/bottom
+title_label.pack(pady=25)   #pady to add pixels top/bottom
+
 
 #input field
-input_label = ttk.Label(master = window, text = "Enter Miles:")
-input_label.pack(pady=10)
-entry = ttk.Entry(window)
-entry.pack(pady=5)
+input_frame = ttk.Frame(master = window)
 
-#conversion function
-def convert():
-    miles = float(entry.get())
-    km = miles*1.60934
-    input_label.config(text=f"{miles} Miles = {km:.2f} Km", font = "Calibri 17 italic")
+#Entry field
+entry_value = tk.IntVar()   #to store the value entered in entry widget
+entry = ttk.Entry(master = input_frame, textvariable=entry_value)
+#textvariable: store values from entery widget to entry_value variable
 
-#button, with convert function as command
-ttk.Button(master = window, text="Convert", command=convert).pack(pady=10)
+#Button
+button = ttk.Button(master = input_frame, text="Convert", command=convert)
+#Remember: don't call the function in the command itself
+
+entry.pack(side="left", padx=10)    #entry field and button along side
+button.pack(side="left")
+input_frame.pack(pady=10)   #the whole input field and the button
+
+
+#Output field
+output_value = tk.StringVar()
+output_label = ttk.Label(master = window, text= "Output",
+                         font="Calibri 20", textvariable=output_value)
+#The textvariable overrides the text in the label
+output_label.pack(pady=10)
+
 
 #run
 window.mainloop()   #to create a window using the window object
